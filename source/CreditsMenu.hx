@@ -107,6 +107,10 @@ class CreditsMenu extends MusicBeatState
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
 
 		Conductor.changeBPM(160);
+        #if mobileC
+        addVirtualPad(UP_DOWN, A);
+        #end
+
 		super.create();
 	}
 

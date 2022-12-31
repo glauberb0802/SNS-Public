@@ -166,6 +166,11 @@ class SkinSelectState extends MusicBeatState
         curSkin = FlxG.save.data.activeSkin;
         displaySkin(skinList[curSkin]);
 
+
+        #if mobileC
+        addVirtualPad(LEFT_RIGHT, A_B);
+        #end
+
         super.create();
 
 		Conductor.changeBPM(102);

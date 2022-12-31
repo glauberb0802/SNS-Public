@@ -78,12 +78,12 @@ class Caching extends MusicBeatState
 		
 		kadeLogo.alpha = 0;
 
-		#if cpp
+
 		if (FlxG.save.data.cacheImages)
 		{
 			trace("caching images...");
 
-			for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/characters")))
+			for (i in HSys.readDirectory("assets/shared/images/characters"))
 			{
 				if (!i.endsWith(".png"))
 					continue;
@@ -104,12 +104,11 @@ class Caching extends MusicBeatState
 
 		trace("caching music...");
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/songs")))
+		for (i in HSys.readDirectory("assets/songs"))
 		{
 			music.push(i);
             trace(i);
 		}
-		#end
 
 		toBeDone = Lambda.count(images) + Lambda.count(music);
 
@@ -123,7 +122,7 @@ class Caching extends MusicBeatState
 
 		trace('starting caching..');
 		
-		#if cpp
+
 		// update thread
 
 		sys.thread.Thread.create(() -> {
@@ -145,7 +144,7 @@ class Caching extends MusicBeatState
 		sys.thread.Thread.create(() -> {
 			cache();
 		});
-		#end
+
 
 		super.create();
 	}

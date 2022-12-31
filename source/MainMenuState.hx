@@ -12,7 +12,6 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import io.newgrounds.NG;
 import lime.app.Application;
 
 #if windows
@@ -180,6 +179,10 @@ class MainMenuState extends MusicBeatState
 		/*#if debug
 		FlxG.save.data.character = 0;
 		#end*/
+
+		#if mobileC
+		addVirtualPad(UP_DOWN, A_B);
+		#end
 
 		super.create();
 		Conductor.changeBPM(102);
